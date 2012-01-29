@@ -6,15 +6,11 @@ public class DatabaseContract {
 
 	private final static String LOG = DatabaseContract.class.getName();
 
-	/**
-	 * Columns for a Cierres
-	 * 
-	 * */
 	interface PlacesColumns {
 		String PLACE_ID = "PlaceId";
 		String NAME = "Name";
-		String PICTURE = "Picture";
 		String DESCRIPTION = "Description";
+		String PICTURE = "Picture";
 		String RATE = "Rate";
 		String TYPE = "Type";
 		String COORD_X = "CoordX";
