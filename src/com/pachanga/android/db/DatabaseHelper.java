@@ -33,12 +33,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				+ PlacesColumns.PLACE_ID + " TEXT, "
 				+ PlacesColumns.NAME + " TEXT, "
 				+ PlacesColumns.DESCRIPTION + " TEXT, "
-				+ PlacesColumns.PICTURE + " BLOB, "
+				+ PlacesColumns.PICTURE + " TEXT, "
 				+ PlacesColumns.RATE + " REAL, "
 				+ PlacesColumns.TYPE + " TEXT, "
 				+ PlacesColumns.COORD_X + " REAL, "
 				+ PlacesColumns.COORD_Y + " REAL, "
-				+ PlacesColumns.FLAG + " INTEGER);");
+				+ PlacesColumns.FLAG + " INTEGER)");
 
 	}
 
