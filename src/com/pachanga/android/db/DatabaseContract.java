@@ -13,6 +13,7 @@ public class DatabaseContract {
 	interface PlacesColumns {
 		String PLACE_ID = "PlaceId";
 		String NAME = "Name";
+		String PICTURE = "Picture";
 		String DESCRIPTION = "Description";
 		String RATE = "Rate";
 		String TYPE = "Type";
