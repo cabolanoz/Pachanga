@@ -19,6 +19,7 @@ public class DatabaseContract {
 		String TYPE = "Type";
 		String COORD_X = "CoordX";
 		String COORD_Y = "CoordY";
+		String FLAG = "Flag";
 	}
 
 	public static final String CONTENT_AUTHORITY = "com.pachanga.android";
