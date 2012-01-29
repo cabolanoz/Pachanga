@@ -52,7 +52,8 @@ public class DatabaseContract {
 		/**
 		 * Default sorting for this entity
 		 * */
-		public static final String DEFAULT_SORT = PlacesColumns.PLACE_ID+ " ASC";
+		public static final String DEFAULT_SORT = PlacesColumns.PLACE_ID
+				+ " ASC";
 
 		public static Uri buildUri(String placesId) {
 			return CONTENT_URI.buildUpon().appendPath(placesId).build();
