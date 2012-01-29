@@ -85,12 +85,11 @@ public class PachangaProvider extends ContentProvider {
 
 		final int match = uriMatcher.match(uri);
 
-		final SQLiteDatabase db = databaseHelper.getWritableDatabase();
+		final SQLiteDatabase db = databaseHelper.getReadableDatabase();
 
 		SQLiteQueryBuilder builder = buildExpandedSelection(uri, match);
 
-		Cursor c = builder.query(db, projection, selection, selectionArgs,
-				null, null, sortOrder);
+		Cursor c = builder.query(db, projection, selection, selectionArgs,null, null, sortOrder);
 
 		return c;
 
@@ -132,9 +131,7 @@ public class PachangaProvider extends ContentProvider {
 		switch (match) {
 
 		case PLACES:
-			count = db.update(DatabaseHelper.Tables.PLACES, values, selection,
-					selectionArgs);
-
+			count = db.update(DatabaseHelper.Tables.PLACES, values, selection,selectionArgs);
 			break;
 		case PLACES_ID:
 			id = Places.getId(uri);
@@ -147,6 +144,8 @@ public class PachangaProvider extends ContentProvider {
 			break;
 		default:
 			throw new IllegalArgumentException("Unknown URI " + uri);
+		
+		
 		}
 
 		return count;

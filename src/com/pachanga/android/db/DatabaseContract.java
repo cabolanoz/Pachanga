@@ -24,7 +24,7 @@ public class DatabaseContract {
 
 	/**
 	 * Paths for the content uri can be build using this on each definition of
-	 * class
+	 * class 
 	 */
 	private static final String PATH_PLACES = "places";
 
