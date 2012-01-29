@@ -14,8 +14,25 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AboutActivity" >
+            <intent-filter>
+                <action android:name="com.pachanga.android.ABOUT_ACTION" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PlacesListActivity" >
+            <intent-filter>
+                <action android:name="com.pachanga.android.PLACES_VIEW_ACTION" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PlaceDetailActivity" >
+            <intent-filter>
+                <action android:name="com.pachanga.android.PLACE_DETAIL_ACTION" />
             </intent-filter>
         </activity>
     </application>
