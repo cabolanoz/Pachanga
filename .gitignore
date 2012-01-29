@@ -1,0 +1,8 @@
+bin/
+/.buildpath
+*.class
+classes.dex
+gen/
+/.project
+resources.ap_
+/.settings
