@@ -5,8 +5,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
-import com.fantaxico.fleetdriverlight.database.DatabaseContract.CierresColumns;
-import com.fantaxico.fleetdriverlight.database.DatabaseContract.ServicesColumns;
 import com.pachanga.android.db.DatabaseContract.PlacesColumns;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
@@ -29,12 +27,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
-		/** Fiscal Year Table creation */
-		db.execSQL("CREATE TABLE " + Tables.PLACES + " (" + BaseColumns._ID
-				+ " INTEGER PRIMARY KEY AUTO_INCREMENT, "
+		// Places table
+		db.execSQL("CREATE TABLE " + Tables.PLACES + " ("
+				+ BaseColumns._ID + " INTEGER PRIMARY KEY AUTO_INCREMENT, "
 				+ PlacesColumns.PLACE_ID + " TEXT, "
 				+ PlacesColumns.NAME + " TEXT, "
-				+ PlacesColumns.DESCRIPTION + " TEXT, " );
+				+ PlacesColumns.DESCRIPTION + " TEXT, "
+				+ PlacesColumns.PICTURE + " BLOB, "
+				+ PlacesColumns.RATE + " REAL, "
+				+ PlacesColumns.TYPE + " TEXT, "
+				+ PlacesColumns.COORD_X + " REAL, "
+				+ PlacesColumns.COORD_Y + " REAL, "
+				+ PlacesColumns.FLAG + " INTEGER);");
 
 	}
 
