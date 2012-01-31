@@ -33,6 +33,12 @@
                 <action android:name="com.pachanga.android.PLACE_DETAIL_ACTION" />
             </intent-filter>
         </activity>
+        
+        <provider 
+            android:authorities="com.pachanga.android"
+            android:name=".db.PachangaProvider">
+        </provider>
+            
     </application>
 
 </manifest>
