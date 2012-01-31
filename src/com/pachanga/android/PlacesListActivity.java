@@ -8,9 +8,7 @@ public class PlacesListActivity extends ListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
-		
 		setContentView(R.layout.places_list);
-		
 	}
 
 }
