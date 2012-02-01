@@ -29,16 +29,18 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		// Places table
 		db.execSQL("CREATE TABLE " + Tables.PLACES + " ("
-				+ BaseColumns._ID + " INTEGER PRIMARY KEY AUTO_INCREMENT, "
+				+ BaseColumns._ID + " INTEGER AUTO_INCREMENT PRIMARY KEY , "
 				+ PlacesColumns.PLACE_ID + " TEXT, "
 				+ PlacesColumns.NAME + " TEXT, "
 				+ PlacesColumns.DESCRIPTION + " TEXT, "
 				+ PlacesColumns.PICTURE + " TEXT, "
 				+ PlacesColumns.RATE + " REAL, "
 				+ PlacesColumns.TYPE + " TEXT, "
+				+ PlacesColumns.ADDRESS+ " TEXT, "
 				+ PlacesColumns.COORD_X + " REAL, "
 				+ PlacesColumns.COORD_Y + " REAL, "
 				+ PlacesColumns.FLAG + " INTEGER)");
+
 
 	}
 
