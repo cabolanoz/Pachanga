@@ -7,8 +7,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
-import android.os.Bundle;
 import android.provider.BaseColumns;
+import android.util.Log;
 
 import com.pachanga.android.db.DatabaseContract.Places;
 
@@ -84,8 +84,10 @@ public class PachangaProvider extends ContentProvider {
 			String[] selectionArgs, String sortOrder) {
 
 		final int match = uriMatcher.match(uri);
-
-		final SQLiteDatabase db = databaseHelper.getReadableDatabase();
+		
+		Log.d(LOG,"Querying the uri "+uri);
+		
+		final SQLiteDatabase db = databaseHelper.getWritableDatabase();
 
 		SQLiteQueryBuilder builder = buildExpandedSelection(uri, match);
 

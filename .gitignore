@@ -6,3 +6,5 @@ gen/
 /.project
 resources.ap_
 /.settings
+/assets
+/libs
