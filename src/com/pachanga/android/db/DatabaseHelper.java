@@ -36,7 +36,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				+ PlacesColumns.PICTURE + " TEXT, "
 				+ PlacesColumns.RATE + " REAL, "
 				+ PlacesColumns.TYPE + " TEXT, "
-				+ PlacesColumns.ADDRESS+ " TEXT, "
+				+ PlacesColumns.ADDRESS + " TEXT, "
 				+ PlacesColumns.COORD_X + " REAL, "
 				+ PlacesColumns.COORD_Y + " REAL, "
 				+ PlacesColumns.FLAG + " INTEGER)");
@@ -45,8 +45,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	}
 
 	@Override
-	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-	}
+	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) { }
 
 }

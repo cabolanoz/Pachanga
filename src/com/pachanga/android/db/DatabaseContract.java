@@ -15,7 +15,7 @@ public class DatabaseContract {
 		String TYPE = "Type";
 		String COORD_X = "CoordX";
 		String COORD_Y = "CoordY";
-		String ADDRESS= "Address";
+		String ADDRESS = "Address";
 		String FLAG = "Flag";
 	}
 
@@ -25,8 +25,7 @@ public class DatabaseContract {
 
 	/**
 	 * Paths for the content uri can be build using this on each definition of
-	 * class 
-	 * content://com.pachanga.android/places
+	 * class content://com.pachanga.android/places
 	 */
 	private static final String PATH_PLACES = "places";
 
