@@ -26,7 +26,7 @@ public class PlacesListActivity extends FragmentActivity implements
 						DatabaseContract.Places.ADDRESS }, new int[] {
 						R.id.tvwPlaceName, R.id.tvwPlaceAddress }, 0);
 
-		ListView listView = (ListView) findViewById(R.id.listPlaces);
+		ListView listView = (ListView) findViewById(R.id.placesList);
 		listView.setAdapter(adapter);
 	}
 
