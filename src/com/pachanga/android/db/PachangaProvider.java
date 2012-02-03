@@ -35,14 +35,12 @@ public class PachangaProvider extends ContentProvider implements PachangaMatcher
 
 	@Override
 	public int delete(Uri arg0, String arg1, String[] arg2) {
-
 		return 0;
 	}
 
 	@Override
 	public String getType(Uri uri) {
 		final int match = uriMatcher.match(uri);
-
 		switch (match) {
 		case PLACES:
 			return Places.CONTENT_TYPE;
@@ -62,12 +60,10 @@ public class PachangaProvider extends ContentProvider implements PachangaMatcher
 		final SQLiteDatabase db = databaseHelper.getWritableDatabase();
 		final int match = uriMatcher.match(uri);
 		switch (match) {
-
 		case PLACES:
 			db.insertOrThrow(DatabaseHelper.Tables.PLACES, null, values);
 			getContext().getContentResolver().notifyChange(uri, null);
 			return Places.buildUri(values.getAsString(BaseColumns._ID));
-
 		default:
 			throw new UnsupportedOperationException("Unknown uri: " + uri);
 		}
@@ -80,10 +76,9 @@ public class PachangaProvider extends ContentProvider implements PachangaMatcher
 	}
 
 	@Override
-	public Cursor query(Uri uri, String[] projection, String selection,
-			String[] selectionArgs, String sortOrder) {
-
+	public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 		final int match = uriMatcher.match(uri);
+
 		//content://com.pachanga.android/places
 		if(uri.getQueryParameter(DatabaseContract.REFRESH)!=null){
 			
@@ -97,11 +92,9 @@ public class PachangaProvider extends ContentProvider implements PachangaMatcher
 		final SQLiteDatabase db = databaseHelper.getWritableDatabase();
 
 		SQLiteQueryBuilder builder = buildExpandedSelection(uri, match);
-
-		Cursor c = builder.query(db, projection, selection, selectionArgs,null, null, sortOrder);
+		Cursor c = builder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
 
 		return c;
-
 	}
 
 	private SQLiteQueryBuilder buildExpandedSelection(Uri uri, int match) {
@@ -128,9 +121,7 @@ public class PachangaProvider extends ContentProvider implements PachangaMatcher
 	}
 
 	@Override
-	public int update(Uri uri, ContentValues values, String selection,
-			String[] selectionArgs) {
-
+	public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
 		// Opens the database object in "write" mode.
 		SQLiteDatabase db = databaseHelper.getWritableDatabase();
 		int count;
@@ -140,7 +131,8 @@ public class PachangaProvider extends ContentProvider implements PachangaMatcher
 		switch (match) {
 
 		case PLACES:
-			count = db.update(DatabaseHelper.Tables.PLACES, values, selection,selectionArgs);
+			count = db.update(DatabaseHelper.Tables.PLACES, values, selection,
+					selectionArgs);
 			break;
 		case PLACES_ID:
 			id = Places.getId(uri);
@@ -153,12 +145,10 @@ public class PachangaProvider extends ContentProvider implements PachangaMatcher
 			break;
 		default:
 			throw new IllegalArgumentException("Unknown URI " + uri);
-		
-		
+
 		}
 
 		return count;
-
 	}
 
 }

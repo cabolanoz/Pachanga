@@ -14,7 +14,6 @@ public class PachangaActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.main);
         startActivity(new Intent(ActionsConstant.PLACES_VIEW_ACTION));
     }
 }
