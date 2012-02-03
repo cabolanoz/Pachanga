@@ -5,5 +5,7 @@
     <string name="app_name">Pachanga</string>
     <string name="place_name">Nombre del Lugar</string>
     <string name="place_address">Dirección</string>
+    <string name="server_url">http://pachanga.net</string>
+    
 
 </resources>

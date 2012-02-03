@@ -26,21 +26,30 @@
         <activity android:name=".PlacesListActivity" >
             <intent-filter >
                 <action android:name="com.pachanga.android.PLACES_VIEW_ACTION" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".PlaceDetailActivity" >
             <intent-filter >
                 <action android:name="com.pachanga.android.PLACE_DETAIL_ACTION" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         
-        <provider 
+        <service android:name=".services.HttpRestService" >
+            <intent-filter >
+                <action android:name="com.pachanga.android.HTTP_ACTION" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>        
+        
+        <provider
             android:authorities="com.pachanga.android"
-            android:name=".db.PachangaProvider">
+            android:name=".db.PachangaProvider" >
         </provider>
-            
+        
     </application>
 
 </manifest>

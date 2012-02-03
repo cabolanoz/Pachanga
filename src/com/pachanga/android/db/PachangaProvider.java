@@ -2,22 +2,22 @@ package com.pachanga.android.db;
 
 import android.content.ContentProvider;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.provider.BaseColumns;
-import android.util.Log;
 
+import com.pachanga.android.ActionsConstant;
+import com.pachanga.android.UrlResolver;
 import com.pachanga.android.db.DatabaseContract.Places;
+import com.pachanga.android.services.ServiceHelper;
 
-public class PachangaProvider extends ContentProvider {
+public class PachangaProvider extends ContentProvider implements PachangaMatchers{
 
-	private static final String LOG = PachangaProvider.class.getName();
-
-	public static final int PLACES = 0x100A;
-	public static final int PLACES_ID = 0x101A;
+	private static final String LOG = PachangaProvider.class.getName();	
 
 	private DatabaseHelper databaseHelper;
 
@@ -84,8 +84,15 @@ public class PachangaProvider extends ContentProvider {
 			String[] selectionArgs, String sortOrder) {
 
 		final int match = uriMatcher.match(uri);
-		
-		Log.d(LOG,"Querying the uri "+uri);
+		//content://com.pachanga.android/places
+		if(uri.getQueryParameter(DatabaseContract.REFRESH)!=null){
+			
+			String url = new UrlResolver(getContext()).parseMatch(match);
+			Intent intent=new Intent(ActionsConstant.HTTP_ACTION);
+			intent.putExtra("server_url", url);
+			
+			ServiceHelper.getInstance(getContext()).startService(intent);
+		}
 		
 		final SQLiteDatabase db = databaseHelper.getWritableDatabase();
 

@@ -5,6 +5,7 @@ import android.net.Uri;
 public class DatabaseContract {
 
 	private final static String LOG = DatabaseContract.class.getName();
+	public static final String REFRESH = "refresh";
 
 	interface PlacesColumns {
 		String PLACE_ID = "PlaceId";
@@ -29,6 +30,7 @@ public class DatabaseContract {
 	 * content://com.pachanga.android/places
 	 */
 	private static final String PATH_PLACES = "places";
+	
 
 	public static class Places implements PlacesColumns {
 		public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon()
