@@ -17,4 +17,9 @@ JSON format.
 ####Places:
 Places will have the following information render on JSON formt
 
-``{"Id":"GUID",\"Name": "Text", "Description":"Text", "Address": "Text", \"Rate":"Integer", "Picture":"URI", "Coords":["Integer","Integer"],\"Type":"Text"\}``
+```{ 
+	"Id":"GUID",
+	"Name": "Text", "Description":"Text", "Address": "Text", 
+	"Rate":"Integer", "Picture":"URI", "Coords":["Integer","Integer"],
+	"Type":"Text"
+}```
