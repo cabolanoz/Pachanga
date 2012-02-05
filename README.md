@@ -19,7 +19,7 @@ Places will have the following information render on JSON formt
 
 ``{ 
 	"Id":"GUID",
-	"Name": "Text", "Description":"Text", "Address": "Text",`` 
-``	"Rate":"Integer", "Picture":"URI", "Coords":["Integer","Integer"],
+	"Name": "Text", "Description":"Text", "Address": "Text",
+	"Rate":"Integer", "Picture":"URI", "Coords":["Integer","Integer"],
 	"Type":"Text"
 }``
