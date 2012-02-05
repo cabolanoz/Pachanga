@@ -4,14 +4,14 @@ Pachanga Project
 Pachanga project is a application meant to recollect data among different sources to get you the most plausible description of entertainment places
 around you.
 
-Mobile Environment
+###Mobile Environment
 
 Most of the Pachanga project is meant to work in mobile environment, the gathered information come from an web application that renders information as
 JSON format.
 
-JSON Samples
+###JSON Samples
 
-Places:
+#####Places:
 Places will have the following information render on JSON formt
 
 { 
