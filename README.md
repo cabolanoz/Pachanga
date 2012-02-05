@@ -11,7 +11,7 @@ JSON format.
 
 ###JSON Samples
 
-#####Places:
+*Places:
 Places will have the following information render on JSON formt
 
 { 
