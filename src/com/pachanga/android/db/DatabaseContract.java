@@ -11,29 +11,26 @@ public class DatabaseContract {
 		String PLACE_ID = "PlaceId";
 		String NAME = "Name";
 		String DESCRIPTION = "Description";
+		String ADDRESS = "Address";
 		String PICTURE = "Picture";
 		String RATE = "Rate";
 		String TYPE = "Type";
 		String COORD_X = "CoordX";
 		String COORD_Y = "CoordY";
-		String ADDRESS = "Address";
 		String FLAG = "Flag";
 	}
 
 	public static final String CONTENT_AUTHORITY = "com.pachanga.android";
-	public static final Uri BASE_CONTENT_URI = Uri.parse("content://"
-			+ CONTENT_AUTHORITY);
+	public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
 
 	/**
 	 * Paths for the content uri can be build using this on each definition of
 	 * class content://com.pachanga.android/places
 	 */
 	private static final String PATH_PLACES = "places";
-	
 
 	public static class Places implements PlacesColumns {
-		public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon()
-				.appendPath(PATH_PLACES).build();
+		public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(PATH_PLACES).build();
 
 		public static String getId(Uri uri) {
 
@@ -52,8 +49,7 @@ public class DatabaseContract {
 		/**
 		 * Default sorting for this entity
 		 * */
-		public static final String DEFAULT_SORT = PlacesColumns.PLACE_ID
-				+ " ASC";
+		public static final String DEFAULT_SORT = PlacesColumns.PLACE_ID + " ASC";
 
 		public static Uri buildUri(String placesId) {
 			return CONTENT_URI.buildUpon().appendPath(placesId).build();
