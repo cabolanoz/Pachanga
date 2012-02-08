@@ -5,6 +5,7 @@
     android:versionName="1.0" >
 
     <uses-sdk android:minSdkVersion="8" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:icon="@drawable/ic_launcher"
@@ -14,7 +15,6 @@
             android:name=".PachangaActivity" >
             <intent-filter >
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -26,14 +26,12 @@
         <activity android:name=".PlacesListActivity" >
             <intent-filter >
                 <action android:name="com.pachanga.android.PLACES_VIEW_ACTION" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity android:name=".PlaceDetailActivity" >
             <intent-filter >
                 <action android:name="com.pachanga.android.PLACE_DETAIL_ACTION" />
-
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

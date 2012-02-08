@@ -7,7 +7,6 @@ import org.json.JSONObject;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.util.Log;
 
 import com.pachanga.android.R;
 import com.pachanga.android.processor.Processor;
@@ -23,11 +22,10 @@ public class HttpRestService extends IntentService {
 
 	@Override
 	protected void onHandleIntent(Intent intent) {
-
 		String url = intent.getStringExtra("server_url");
-		Log.i(LOG, "Action is : " + url);
 
 		Map<String, String> parameters = new HashMap<String, String>();
+		parameters.put("server_url", url);
 
 		/*
 		 * for (String key : intent.getExtras().keySet()) if
@@ -39,6 +37,7 @@ public class HttpRestService extends IntentService {
 		Processor processor = ProcessorFactory.buildProcessor(this, intent.getAction(), url.replace(getString(R.string.server_url), ""));
 		if (processor != null) {
 			processor.process(jsonObject);
+			sendBroadcast(intent);
 		}
 	}
 

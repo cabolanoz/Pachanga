@@ -7,7 +7,7 @@ public class DatabaseContract {
 	private final static String LOG = DatabaseContract.class.getName();
 	public static final String REFRESH = "refresh";
 
-	interface PlacesColumns {
+	public interface PlacesColumns {
 		String PLACE_ID = "PlaceId";
 		String NAME = "Name";
 		String DESCRIPTION = "Description";

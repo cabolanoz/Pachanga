@@ -15,9 +15,9 @@ import com.pachanga.android.UrlResolver;
 import com.pachanga.android.db.DatabaseContract.Places;
 import com.pachanga.android.services.ServiceHelper;
 
-public class PachangaProvider extends ContentProvider implements PachangaMatchers{
+public class PachangaProvider extends ContentProvider implements PachangaMatchers {
 
-	private static final String LOG = PachangaProvider.class.getName();	
+	private static final String LOG = PachangaProvider.class.getName();
 
 	private DatabaseHelper databaseHelper;
 
@@ -79,20 +79,20 @@ public class PachangaProvider extends ContentProvider implements PachangaMatcher
 	public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder) {
 		final int match = uriMatcher.match(uri);
 
-		//content://com.pachanga.android/places
-		if(uri.getQueryParameter(DatabaseContract.REFRESH)!=null){
-			
+		// content://com.pachanga.android/places
+		if (uri.getQueryParameter(DatabaseContract.REFRESH) != null) {
 			String url = new UrlResolver(getContext()).parseMatch(match);
-			Intent intent=new Intent(ActionsConstant.HTTP_ACTION);
+			Intent intent = new Intent(ActionsConstant.HTTP_ACTION);
 			intent.putExtra("server_url", url);
-			
+
 			ServiceHelper.getInstance(getContext()).startService(intent);
 		}
-		
+
 		final SQLiteDatabase db = databaseHelper.getWritableDatabase();
 
 		SQLiteQueryBuilder builder = buildExpandedSelection(uri, match);
-		Cursor c = builder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
+		Cursor c = builder.query(db, projection, selection, selectionArgs,
+				null, null, sortOrder);
 
 		return c;
 	}
@@ -121,7 +121,8 @@ public class PachangaProvider extends ContentProvider implements PachangaMatcher
 	}
 
 	@Override
-	public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
+	public int update(Uri uri, ContentValues values, String selection,
+			String[] selectionArgs) {
 		// Opens the database object in "write" mode.
 		SQLiteDatabase db = databaseHelper.getWritableDatabase();
 		int count;
