@@ -15,8 +15,11 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 public class HttpCaller {
 
+	private static final String LOG=HttpCaller.class.getName();
 	private static HttpCaller instance;
 	
 	public static HttpCaller sharedInstance() {

@@ -22,13 +22,17 @@ public class PlacesListActivity extends FragmentActivity implements LoaderCallba
 
 	private static String LOG = PlacesListActivity.class.getName();
 	private SimpleCursorAdapter adapter;
-	private PlacesBroadcastReceiver placesBroadcastReceiver = new PlacesBroadcastReceiver();
+	private PlacesBroadcastReceiver receiver;
 	private int refreshCounter = 0;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		receiver=new PlacesBroadcastReceiver();
+		
 		setContentView(R.layout.places_list);
+
 		getApplication().deleteDatabase(DatabaseHelper.database);
 		adapter = new SimpleCursorAdapter(this, R.layout.place_item, null, new String[] {DatabaseContract.Places.NAME, DatabaseContract.Places.ADDRESS}, new int[] {R.id.tvwPlaceName, R.id.tvwPlaceAddress }, 0);
 
@@ -39,14 +43,18 @@ public class PlacesListActivity extends FragmentActivity implements LoaderCallba
 	@Override
 	public void onResume() {
 		super.onResume();
+		
+		IntentFilter filter=new IntentFilter();
+		filter.addAction(ActionsConstant.HTTP_ACTION);
+		registerReceiver(receiver, filter);
+		
 		getSupportLoaderManager().restartLoader(0, null, this);
-		registerReceiver(placesBroadcastReceiver, new IntentFilter(ActionsConstant.PLACES_VIEW_ACTION));
 	}
-
+	
 	@Override
-	public void onPause() {
+	public void onPause(){
 		super.onPause();
-		unregisterReceiver(placesBroadcastReceiver);
+		unregisterReceiver(receiver);
 	}
 	
 	@Override
@@ -89,7 +97,9 @@ public class PlacesListActivity extends FragmentActivity implements LoaderCallba
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			Log.i(LOG, "Action: " + intent.getAction());
+			Log.d(LOG,"Something happen maybe we should refresh");
+			refreshCounter=0;
+			getSupportLoaderManager().restartLoader(0, null, PlacesListActivity.this);
 		}
 		
 	}
