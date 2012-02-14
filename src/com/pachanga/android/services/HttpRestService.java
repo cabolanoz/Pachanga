@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.util.Log;
 
 import com.pachanga.android.R;
 import com.pachanga.android.processor.Processor;
@@ -37,7 +38,14 @@ public class HttpRestService extends IntentService {
 		Processor processor = ProcessorFactory.buildProcessor(this, intent.getAction(), url.replace(getString(R.string.server_url), ""));
 		if (processor != null) {
 			processor.process(jsonObject);
-			sendBroadcast(intent);
+			
+			Intent broadcastIntent=new Intent();
+			broadcastIntent.setAction(intent.getAction());
+			broadcastIntent.putExtra("success", true);
+			
+			sendBroadcast(broadcastIntent);
+			Log.d(LOG,broadcastIntent.toString());
+			
 		}
 	}
 
