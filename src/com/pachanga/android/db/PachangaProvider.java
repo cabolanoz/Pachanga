@@ -91,8 +91,7 @@ public class PachangaProvider extends ContentProvider implements PachangaMatcher
 		final SQLiteDatabase db = databaseHelper.getWritableDatabase();
 
 		SQLiteQueryBuilder builder = buildExpandedSelection(uri, match);
-		Cursor c = builder.query(db, projection, selection, selectionArgs,
-				null, null, sortOrder);
+		Cursor c = builder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
 
 		return c;
 	}

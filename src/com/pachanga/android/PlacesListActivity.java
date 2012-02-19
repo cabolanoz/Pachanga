@@ -13,6 +13,8 @@ import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.pachanga.android.db.DatabaseContract;
@@ -21,32 +23,40 @@ import com.pachanga.android.db.DatabaseHelper;
 public class PlacesListActivity extends FragmentActivity implements LoaderCallbacks<Cursor> {
 
 	private static String LOG = PlacesListActivity.class.getName();
-	private SimpleCursorAdapter adapter;
-	private PlacesBroadcastReceiver receiver;
+	private SimpleCursorAdapter simpleCursorAdapter;
+	private PlacesBroadcastReceiver placesBroadcastReceiver;
 	private int refreshCounter = 0;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		receiver=new PlacesBroadcastReceiver();
+		placesBroadcastReceiver = new PlacesBroadcastReceiver();
 		
 		setContentView(R.layout.places_list);
 
 		getApplication().deleteDatabase(DatabaseHelper.database);
-		adapter = new SimpleCursorAdapter(this, R.layout.place_item, null, new String[] {DatabaseContract.Places.NAME, DatabaseContract.Places.ADDRESS}, new int[] {R.id.tvwPlaceName, R.id.tvwPlaceAddress }, 0);
+		simpleCursorAdapter = new SimpleCursorAdapter(this, R.layout.place_item, null, new String[] {DatabaseContract.Places.NAME, DatabaseContract.Places.ADDRESS}, new int[] {R.id.tvwPlaceName, R.id.tvwPlaceAddress }, 0);
 
 		ListView listView = (ListView) findViewById(R.id.placesList);
-		listView.setAdapter(adapter);
+		listView.setAdapter(simpleCursorAdapter);
+		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+				Intent intent = new Intent(ActionsConstant.PLACE_DETAIL_ACTION);
+				intent.putExtra("DetailId", id);
+				startActivity(intent);
+			}
+		});
 	}
 	
 	@Override
 	public void onResume() {
 		super.onResume();
 		
-		IntentFilter filter=new IntentFilter();
+		IntentFilter filter = new IntentFilter();
 		filter.addAction(ActionsConstant.HTTP_ACTION);
-		registerReceiver(receiver, filter);
+		registerReceiver(placesBroadcastReceiver, filter);
 		
 		getSupportLoaderManager().restartLoader(0, null, this);
 	}
@@ -54,7 +64,7 @@ public class PlacesListActivity extends FragmentActivity implements LoaderCallba
 	@Override
 	public void onPause(){
 		super.onPause();
-		unregisterReceiver(receiver);
+		unregisterReceiver(placesBroadcastReceiver);
 	}
 	
 	@Override
@@ -85,12 +95,12 @@ public class PlacesListActivity extends FragmentActivity implements LoaderCallba
 			}
 			
 		}
-		adapter.swapCursor(cursor);
+		simpleCursorAdapter.swapCursor(cursor);
 	}
 
 	@Override
 	public void onLoaderReset(Loader<Cursor> cursor) {
-		adapter.swapCursor(null);
+		simpleCursorAdapter.swapCursor(null);
 	}
 	
 	class PlacesBroadcastReceiver extends BroadcastReceiver {
