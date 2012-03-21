@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
-import android.database.CursorWrapper;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -18,7 +17,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.pachanga.android.db.DatabaseContract;
-import com.pachanga.android.db.DatabaseContract.Places;
 import com.pachanga.android.db.DatabaseHelper;
 
 public class PlacesListActivity extends FragmentActivity implements
@@ -51,9 +49,9 @@ public class PlacesListActivity extends FragmentActivity implements
 			public void onItemClick(AdapterView<?> adapterView, View view,
 					int position, long id) {
 				Intent intent = new Intent(ActionsConstant.PLACE_DETAIL_ACTION);
-				CursorWrapper wrapper=(CursorWrapper)adapterView.getItemAtPosition(position);
+//				CursorWrapper wrapper=(CursorWrapper)adapterView.getItemAtPosition(position);
 				
-				intent.putExtra("DetailId", wrapper.getLong(wrapper.getColumnIndex(Places._ID)));
+				intent.putExtra("DetailId", id);
 				startActivity(intent);
 			}
 		});

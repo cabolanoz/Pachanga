@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.pachanga.android.db.DatabaseContract.Places;
 
@@ -25,8 +26,11 @@ public class PlaceDetailActivity extends Activity {
 			cursor = managedQuery(Places.buildUri(String.valueOf(detailId)), null, null, null, null);
 		
 		if (cursor != null)
-			if (cursor.moveToNext())
-				Log.i(LOG, "Fotografia: " + cursor.getString(0));
+			if (cursor.moveToNext()) {
+				TextView tvwPlaceName = (TextView) findViewById(R.id.tvwPlaceName);
+				tvwPlaceName.setText(cursor.getString(2));
+				Log.i(LOG, "PICTURE " + cursor.getString(4));
+			}
 	}
 	
 }
