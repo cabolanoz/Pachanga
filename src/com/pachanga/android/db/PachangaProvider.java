@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
 import android.provider.BaseColumns;
+import android.util.Log;
 
 import com.pachanga.android.ActionsConstant;
 import com.pachanga.android.UrlResolver;
@@ -61,9 +62,10 @@ public class PachangaProvider extends ContentProvider implements PachangaMatcher
 		final int match = uriMatcher.match(uri);
 		switch (match) {
 		case PLACES:
-			db.insertOrThrow(DatabaseHelper.Tables.PLACES, null, values);
+			Long _id=db.insertOrThrow(DatabaseHelper.Tables.PLACES, null, values);
+			
 			getContext().getContentResolver().notifyChange(uri, null);
-			return Places.buildUri(values.getAsString(BaseColumns._ID));
+			return Places.buildUri(_id.toString());
 		default:
 			throw new UnsupportedOperationException("Unknown uri: " + uri);
 		}
@@ -92,7 +94,7 @@ public class PachangaProvider extends ContentProvider implements PachangaMatcher
 
 		SQLiteQueryBuilder builder = buildExpandedSelection(uri, match);
 		Cursor c = builder.query(db, projection, selection, selectionArgs, null, null, sortOrder);
-
+		
 		return c;
 	}
 

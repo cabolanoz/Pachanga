@@ -1,6 +1,7 @@
 package com.pachanga.android.db;
 
 import android.net.Uri;
+import android.provider.BaseColumns;
 
 public class DatabaseContract {
 
@@ -29,7 +30,7 @@ public class DatabaseContract {
 	 */
 	private static final String PATH_PLACES = "places";
 
-	public static class Places implements PlacesColumns {
+	public static class Places implements PlacesColumns, BaseColumns{
 		public static final Uri CONTENT_URI = BASE_CONTENT_URI.buildUpon().appendPath(PATH_PLACES).build();
 
 		public static String getId(Uri uri) {

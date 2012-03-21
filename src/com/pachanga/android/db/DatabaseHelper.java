@@ -39,7 +39,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				+ PlacesColumns.ADDRESS + " TEXT, "
 				+ PlacesColumns.COORD_X + " REAL, "
 				+ PlacesColumns.COORD_Y + " REAL, "
-				+ PlacesColumns.FLAG + " INTEGER)");
+				+ PlacesColumns.FLAG + " INTEGER )");
 
 
 	}
