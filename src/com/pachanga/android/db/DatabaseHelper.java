@@ -29,7 +29,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	public void onCreate(SQLiteDatabase db) {
 		// Places table
 		db.execSQL("CREATE TABLE " + Tables.PLACES + " ("
-				+ BaseColumns._ID + " INTEGER AUTO_INCREMENT PRIMARY KEY , "
+				+ BaseColumns._ID + " INTEGER , "
 				+ PlacesColumns.PLACE_ID + " TEXT, "
 				+ PlacesColumns.NAME + " TEXT, "
 				+ PlacesColumns.DESCRIPTION + " TEXT, "
@@ -39,7 +39,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 				+ PlacesColumns.ADDRESS + " TEXT, "
 				+ PlacesColumns.COORD_X + " REAL, "
 				+ PlacesColumns.COORD_Y + " REAL, "
-				+ PlacesColumns.FLAG + " INTEGER )");
+				+ PlacesColumns.FLAG + " INTEGER," 
+				+ "PRIMARY KEY (" + BaseColumns._ID + ")  ON CONFLICT REPLACE )");
 
 
 	}
